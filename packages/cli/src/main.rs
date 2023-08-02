@@ -102,6 +102,11 @@ async fn main() -> anyhow::Result<()> {
             .await
             .map_err(|e| anyhow!("🚫 Error with plugin: {}", e)),
 
+        Tool(opts) => opts
+            .tool()
+            .await
+            .map_err(|e| anyhow!("🚫 Error with tool: {}", e)),
+
         Autoformat(opts) => opts
             .autoformat()
             .await

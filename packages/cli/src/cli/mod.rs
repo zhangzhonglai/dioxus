@@ -7,6 +7,7 @@ pub mod clean;
 pub mod config;
 pub mod create;
 pub mod plugin;
+pub mod tool;
 pub mod serve;
 pub mod translate;
 pub mod version;
@@ -83,6 +84,9 @@ pub enum Commands {
     #[cfg(feature = "plugin")]
     #[clap(subcommand)]
     Plugin(plugin::Plugin),
+
+    #[clap(subcommand)]
+    Tool(tool::Tool)
 }
 
 impl Display for Commands {
@@ -98,6 +102,7 @@ impl Display for Commands {
             Commands::Autoformat(_) => write!(f, "fmt"),
             Commands::Check(_) => write!(f, "check"),
             Commands::Bundle(_) => write!(f, "bundle"),
+            Commands::Tool(_) => write!(f, "tool"),
 
             #[cfg(feature = "plugin")]
             Commands::Plugin(_) => write!(f, "plugin"),
